@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="ingredient1" class="com.example.di.Domain.Ingredient">
+        <constructor-arg index="0" value="Papas Fritas"/>
+        <constructor-arg index="1" value="Papas lavadas"/>
+        <constructor-arg index="2" value="1"/>
+        <constructor-arg index="3" value="Kilo"/>
+    </bean>
+    <bean id="ingredient2" class="com.example.di.Domain.Ingredient">
+    <constructor-arg index="0" value="Aceite"/>
+    <constructor-arg index="1" value="Aceite de girasol"/>
+    <constructor-arg index="2" value="1"/>
+    <constructor-arg index="3" value="Litro"/>
+    </bean>
+    <bean id="step1" class="com.example.di.Domain.Step">
+        <constructor-arg index="0" value="Picar las papas"/>
+        <constructor-arg index="1" value="1"/>
+    </bean>
+    <bean id="step2" class="com.example.di.Domain.Step">
+    <constructor-arg index="0" value="Freir las papas en aceite"/>
+    <constructor-arg index="1" value="2"/>
+    </bean>
+
+    <bean id="recipe" class="com.example.di.Domain.Recipe">
+        <constructor-arg index="0" value="Papas Fritas"/>
+        <constructor-arg index="1" value="Papas fritas en aceite de girasol"/>
+        <constructor-arg index="2" value="2"/>
+        <constructor-arg index="3">
+            <list>
+                <ref bean="step1" />
+                <ref bean="step2" />
+            </list>
+        </constructor-arg>
+        <constructor-arg index="4">
+            <list>
+                <ref bean="ingredient1" />
+                <ref bean="ingredient2" />
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
